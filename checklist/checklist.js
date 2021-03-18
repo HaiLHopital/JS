@@ -31,17 +31,15 @@ function newElement() {
 }
 
 //delete buttons
-// ##TO DO it's only hiding checks, need to remove from existence
 function deleteElement(){
-   // let element = document.getElementById("list")
     let div = this.parentElement;
-    div.style.display = "none";
+    div.remove();
 }
 
 function clearList(){
     let myDeleteButtons = document.getElementsByClassName("eraseElement");
     alert(myDeleteButtons.length);
-    for (let i=0; i < myDeleteButtons.length; i++){
-        myDeleteButtons[i].click()
+    while (myDeleteButtons.length > 0){
+        myDeleteButtons[0].click();
     }
 }
