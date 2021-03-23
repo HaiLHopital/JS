@@ -2,18 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 
+//list of tasks
 let todo_list = [
     {index:1,value: "learn CSS"},
     {index:2, value: "learn React"}
 ]
 
-
+//header
 class ToDoHeader extends React.Component {
     render () {
         return <h1>Todo list</h1>;
     }
 }
 
+//list of task instances
 class ToDoList extends React.Component {
     render() {
         let items = this.props.items.map((item, index) =>{
@@ -27,6 +29,7 @@ class ToDoList extends React.Component {
     }
 }
 
+//task instance
 class ToDoElement extends React.Component {
     onClickClose = () => {
         let index = parseInt((this.props.index))
@@ -44,6 +47,7 @@ class ToDoElement extends React.Component {
     }
 }
 
+//new tak form
 class NewElement extends React.Component{
     constructor(props) {
         super(props);
@@ -58,6 +62,7 @@ class NewElement extends React.Component{
         if(Task){
             this.props.addElement(Task);
             event.target.reset();
+            this.setState({newTask: ""})
         }
 
     }
@@ -77,7 +82,7 @@ class NewElement extends React.Component{
     }
 }
 
-
+//building everything together, should probably be in diff file, but app is not that big so...
 class App extends React.Component{
     constructor(props) {
         super(props);
