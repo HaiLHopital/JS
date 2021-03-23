@@ -1,0 +1,46 @@
+html, body {
+    height: 100%;
+    color: #61DAFB;
+    background: #2D2D2D;
+}
+
+h1 {
+    margin: 20px 0 15px 0;
+}
+
+#main {
+    width: 500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+ul {
+    list-style: none;
+}
+
+ul>li {
+    background-color: #F5F5F5;
+    color: #2D2D2D;
+}
+ul>li:hover{
+    background-color: #F0F0F0
+}
+
+
+.close {
+    border: none;
+    margin-left: fill;
+}
+
+.close:hover{
+    border: aquamarine;
+    background-color: gray;
+    color: brown;
+}
+
+.form-inline .form-control {
+    width: 60%;
+    margin-left: 0;
+}
+
+
