@@ -10,13 +10,14 @@ h1 {
 }
 
 #main {
-    width: 500px;
+    width: 400px;
     margin-left: 100px;
     text-align: left;
 }
 
 ul {
     list-style: none;
+    margin-left: -100px;
 }
 
 ul>li {
@@ -30,7 +31,7 @@ ul>li:hover{
 
 .close {
     position: fixed;
-    left: 580px;
+    left: 485px;
 
     border: none;
 }
