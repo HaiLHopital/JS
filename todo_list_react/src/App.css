@@ -4,13 +4,14 @@ html, body {
     background: #2D2D2D;
 }
 
+
 h1 {
     margin: 20px 0 15px 0;
 }
 
 #main {
     width: 500px;
-    margin: 0 auto;
+    margin-left: 100px;
     text-align: left;
 }
 
@@ -28,8 +29,10 @@ ul>li:hover{
 
 
 .close {
+    position: fixed;
+    left: 580px;
+
     border: none;
-    margin-left: fill;
 }
 
 .close:hover{
