@@ -4,8 +4,8 @@ import './App.css';
 
 //list of tasks
 let todo_list = [
-    {index:1,value: "learn CSS"},
-    {index:2, value: "learn React"}
+    {index:0,value: "learn CSS"},
+    {index:1, value: "learn React"}
 ]
 
 //header
@@ -69,7 +69,7 @@ class NewElement extends React.Component{
     render() {
         return(
             <form onSubmit={this.onSubmit} className="form-inline">
-                <p>Enter new job:</p>
+                <p>Enter new task:</p>
                 <input
                     type="text"
                     className="form-control"
@@ -82,23 +82,45 @@ class NewElement extends React.Component{
     }
 }
 
+//control buttons, currently only clear list, probably will add a save button if I'll figure out how to work with json files
+class ControlButtons extends React.Component{
+    onClickClear = () => {
+        this.props.clearList()
+    }
+    render(){
+        return(
+            <button type="button" onClick={this.onClickClear}>Clear List</button>
+        )
+    }
+}
+
 //building everything together, should probably be in diff file, but app is not that big so...
 class App extends React.Component{
     constructor(props) {
         super(props);
         this.state = {todo_list: todo_list};
     }
+
     addElement = (newTask)=>{
         todo_list.push({
-            index: todo_list.length+1,
+            index: todo_list.length,
             value: newTask
         });
-
         this.setState({todo_list: todo_list})
     }
 
     removeItem = (index) => {
         todo_list.splice(index, 1);
+        this.setState({todo_list: todo_list})
+    }
+
+    clearList = () => {
+        todo_list.map(()=>{
+            while (todo_list.length>0){
+                todo_list.pop()
+            }
+            })
+
         this.setState({todo_list: todo_list})
     }
     render() {
@@ -108,7 +130,7 @@ class App extends React.Component{
 
                 <NewElement addElement={this.addElement} />
                 <ToDoList items={this.props.initItems} removeItem={this.removeItem}/>
-
+                <ControlButtons clearList={this.clearList}/>
             </div>
         )
     }

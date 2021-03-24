@@ -30,9 +30,8 @@ ul>li:hover{
 
 
 .close {
-    position: fixed;
+    position: absolute;
     left: 485px;
-
     border: none;
 }
 
