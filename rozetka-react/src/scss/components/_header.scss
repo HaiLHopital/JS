@@ -1,0 +1,33 @@
+@import '../variables';
+
+.header {
+  background: rgb(34, 33, 33);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      display: flex;
+      padding-left: 30px;
+      img {
+        padding: 10px;
+      }
+      h1 {
+        color: $head-text;
+      }
+    }
+  }
+
+  .cart {
+    padding: 5px;
+    border-radius: 8px;
+    display: flex;
+    margin-right: 100px;
+  }
+
+  .cart:hover {
+    background: rgb(77, 77, 77);
+  }
+}

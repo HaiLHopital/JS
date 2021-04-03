@@ -1,0 +1,18 @@
+@import '../variables';
+
+.mainContainer {
+  display: flex;
+  
+  .categories {
+    display: flex;
+    width: 400px;
+    height: 100vh;
+    border-right: 1px solid rgb(187, 187, 187);
+  }
+
+  .mainBlock {
+      padding: 20px;
+      width:auto;
+    display: flex;
+  }
+}
