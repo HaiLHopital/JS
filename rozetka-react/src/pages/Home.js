@@ -1,6 +1,4 @@
-import Header from '../components/Header';
-import Categories from '../components/Categories';
-import MainBlock from '../components/MainBlock';
+import {Header, Categories, MainBlock} from '../components';
 
 
 import React from 'react'
