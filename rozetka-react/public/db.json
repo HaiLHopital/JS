@@ -1,0 +1,32 @@
+{
+    "products": [
+        {
+            "id": 0,
+            "name": "kekw",
+            "category": "keyboard",
+            "price": 120,
+            "params": "black"
+        },
+        {
+            "id": 1,
+            "name": "1head",
+            "category": "monitor",
+            "price": 1300,
+            "params": "4k"
+        },
+        {
+            "id": 2,
+            "name": "lulw",
+            "category": "monitor",
+            "price": 1200,
+            "params": "full hd"
+        },
+        {
+            "id": 3,
+            "name": "Kappa",
+            "category": "keyboard",
+            "price": 130,
+            "params": "white"
+        }
+    ]
+}

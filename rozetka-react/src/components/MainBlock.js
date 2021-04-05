@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import Item from './SellingItem'
+import Item from './SellingItem';
 
-const products=[{id:0, name:"kekw", category:"keyboard",price:120,params:"black"},
-{id:1, name:"lulw", category:"monitor",price:120,params:"full hd"},
-{id:2, name:"Kappa", category:"keyboard",price:120,params:"white"},]
+function MainBlock() {
+  //should be moved out upper in hierarchy
 
-function MainBlock(){
-    return(
-        <div className="displayedItems">
-            {products.map(item=><Item {...item}/>)}
-          </div>
-        
-    )
+  const [products, setProducts] = useState([]);
+
+  /*useEffect(() => {                                   idk if i should use axios, but since I know about it why not
+    fetch('http://localhost:3000/db.json')
+      .then((resp) => resp.json())
+      .then((json) => {
+        setProducts(json.products);
+      });
+  }, []);*/
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/db.json').then(({ data }) => {
+      setProducts(data.products);
+    });
+  }, []);
+
+  return (
+    <div className="displayedItems">
+      {products.map((item) => (
+        <Item key={item.id} {...item} />
+      ))}
+    </div>
+  );
 }
 
 export default MainBlock;
