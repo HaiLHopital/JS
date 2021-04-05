@@ -1,7 +1,7 @@
 import {Header, Categories, MainBlock} from '../components';
 
-
 import React from 'react'
+
 
 function Home(){
     return(
@@ -10,6 +10,7 @@ function Home(){
         <div className="mainContainer">
           <Categories />
           <MainBlock />
+          
         </div>
       </div> 
     )

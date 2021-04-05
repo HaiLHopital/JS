@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import NotFound from './NotFound';
-import { Cart, Home } from '../pages';
+import { Cart, Home, Keyboards, Monitors } from '../pages';
 
 function RouterConfig() {
   return (
@@ -13,8 +13,12 @@ function RouterConfig() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route exactpath="/monitors"></Route>
-        <Route exact path="/keyboards"></Route>
+        <Route exact path="/monitors">
+          <Monitors />
+        </Route>
+        <Route exact path="/keyboards">
+          <Keyboards />
+        </Route>
         <Route path="*">
           <NotFound />
         </Route>

@@ -10,7 +10,7 @@ function Categories() {
             <Link to="/monitors">Мониторы</Link>
           </li>
           <li>
-            <Link to="/keyboa">Клавиатуры</Link>
+            <Link to="/keyboards">Клавиатуры</Link>
           </li>
         </ul>
       </div>

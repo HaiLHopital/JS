@@ -1,0 +1,17 @@
+.sellingItem{
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    margin: 10px;
+    border: 1px solid gray;
+
+    .params{
+        display: none;
+    }
+}
+
+.sellingItem:hover{
+    .params{
+        display: initial;
+    }
+}
