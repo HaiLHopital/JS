@@ -3,7 +3,7 @@ const initialState = {
   isLoaded: false
 };
 
-const products = (state = initialState, action) => {
+const productsReducer = (state = initialState, action) => {
   if (action.type === 'set_products') {
     return {
       ...state,
@@ -15,4 +15,4 @@ const products = (state = initialState, action) => {
   return state;
 };
 
-export default products;
+export default productsReducer;

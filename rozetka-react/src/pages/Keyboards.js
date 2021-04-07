@@ -1,7 +1,10 @@
 import React from 'react';
 import { Header } from '../components';
+import { useSelector } from 'react-redux'
 
 function Keyboards() {
+
+  //const 
   return (
     <div>
       <Header />
