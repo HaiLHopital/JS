@@ -1,15 +1,18 @@
 import React from 'react';
-import { Header } from '../components';
-import { useSelector } from 'react-redux'
+import { Header, MainBlock } from '../components';
+import { useSelector } from 'react-redux';
 
 function Keyboards() {
+  const items = useSelector((products) =>
+    products.items.filter((value) => value.category === 'keyboard'),
+  );
 
-  //const 
   return (
     <div>
       <Header />
-      
-      <h1>Keyboard</h1>
+
+      <h1>Keyboards</h1>
+      <MainBlock products={items} />
     </div>
   );
 }

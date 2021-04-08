@@ -1,13 +1,18 @@
 import React from 'react';
-import {  Header } from '../components';
+import { Header, MainBlock } from '../components';
+import { useSelector } from 'react-redux';
 
 function Monitors() {
-console.log(1)
+  const items = useSelector((products) =>
+    products.items.filter((value) => value.category === 'monitor'),
+  );
 
   return (
     <div>
       <Header />
-        <h1>Monitors</h1>
+
+      <h1>Monitors</h1>
+      <MainBlock products={items} />
     </div>
   );
 }

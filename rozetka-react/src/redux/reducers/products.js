@@ -1,6 +1,6 @@
 const initialState = {
   items: [],
-  isLoaded: false
+  //isLoaded: false
 };
 
 const productsReducer = (state = initialState, action) => {
@@ -8,7 +8,7 @@ const productsReducer = (state = initialState, action) => {
     return {
       ...state,
       items: action.payload,
-      isLoaded: true,
+      //isLoaded: true,
     };
   }
 

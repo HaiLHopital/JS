@@ -1,11 +1,7 @@
 import { Header, Categories, MainBlock } from '../components';
 
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-
-import store from '../redux/store';
-import setProducts from '../redux/actions/products';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 function Home() {
   //const [products, setProducts] = useState([]);
@@ -18,20 +14,7 @@ function Home() {
       });
   }, []);*/
 
-  const dispatch = useDispatch();
-  const {items} = useSelector((products)=>{
-    return {
-      items: products.items
-    }
-  })
-
-  useEffect(() => {
-    axios.get('http://localhost:3000/db.json').then(({ data }) => {
-      dispatch(setProducts(data.products));
-    });
-  }, []);
-
-  console.log(items)
+  const items = useSelector((products) => products.items);
 
   return (
     <div>
