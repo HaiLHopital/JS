@@ -5,14 +5,27 @@
   
   .categories {
     display: flex;
-    width: 400px;
+    width: 350px;
     height: 100vh;
     border-right: 1px solid rgb(187, 187, 187);
+    padding-left: 50px;
+
+    .categorieslink{
+      display: inline-flex;
+      .linktext{
+        margin: 8px;
+        font-size: 20px;
+      }
+        
+    }
+
+    
+    a:link, a:visited{
+      color: rgb(5, 167, 196);
+      text-decoration: none;
+    }
+    
   }
 
-  .mainBlock {
-      padding: 20px;
-      width:auto;
-    display: flex;
-  }
+  
 }

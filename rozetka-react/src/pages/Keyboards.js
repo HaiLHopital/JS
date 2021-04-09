@@ -12,7 +12,12 @@ function Keyboards() {
       <Header />
 
       <h1>Keyboards</h1>
-      <MainBlock products={items} />
+      <div className="mainContainer">
+        <div className="categories">
+          <p>kekw</p>
+        </div>
+        <MainBlock products={items} />
+      </div>
     </div>
   );
 }

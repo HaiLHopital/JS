@@ -12,7 +12,12 @@ function Monitors() {
       <Header />
 
       <h1>Monitors</h1>
-      <MainBlock products={items} />
+      <div className="mainContainer">
+        <div className="categories">
+          <p>kekw</p>
+        </div>
+        <MainBlock products={items} />
+      </div>
     </div>
   );
 }

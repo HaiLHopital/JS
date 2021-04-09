@@ -2,31 +2,84 @@
     "products": [
         {
             "id": 0,
-            "name": "kekw",
-            "category": "keyboard",
-            "price": 120,
-            "params": "black"
+            "imgUrl": "https://i8.rozetka.ua/goods/21166568/samsung_lc27g54tqwixci_images_21166568246.jpg",
+            "manufacturer": "Samsung",
+            "name": "Odyssey G5 LC27G54T",
+            "category": "monitor",
+            "price": 7999,
+            "params": "black, 27"
         },
         {
             "id": 1,
-            "name": "1head",
-            "category": "monitor",
-            "price": 1300,
-            "params": "4k"
+            "imgUrl": "https://i2.rozetka.ua/goods/10289690/hyperx_hx_kb5me2_ru_images_10289690949.jpg",
+            "manufacturer": "HyperX",
+            "name": "Alloy Core",
+            "category": "keyboard",
+            "price": 1799,
+            "params": "black, RGB, USB"
         },
         {
             "id": 2,
-            "name": "lulw",
-            "category": "monitor",
-            "price": 1200,
-            "params": "full hd"
+            "imgUrl": "https://i8.rozetka.ua/goods/20106372/logitech_920_009417_images_20106372106.jpg",
+            "manufacturer": "Logitech",
+            "name": "MX Keys",
+            "category": "keyboard",
+            "price": 3599,
+            "params": "black, Wireless"
         },
         {
             "id": 3,
-            "name": "Kappa",
+            "imgUrl": "https://i2.rozetka.ua/goods/21117237/acer_um_kx2ee_005_images_21117237171.jpg",
+            "manufacturer": "Acer",
+            "name": "KA252Qbmix",
+            "category": "monitor",
+            "price": 4099,
+            "params": "black,24.5"
+        },
+        {
+            "id": 4,
+            "imgUrl": "https://i8.rozetka.ua/goods/21166559/samsung_c27f396f_images_21166559821.jpg",
+            "manufacturer": "Samsung ",
+            "name": "C27F396F",
+            "category": "monitor",
+            "price": 4444,
+            "params": "black,27,Curved"
+        },
+        {
+            "id": 5,
+            "imgUrl": "https://i2.rozetka.ua/goods/21166569/samsung_lf24t350fhixc_images_21166569861.jpg",
+            "manufacturer": "Samsung",
+            "name": "F24T350FHI",
+            "category": "monitor",
+            "price": 3599,
+            "params": "Dark Gray,23.8"
+        },
+        {
+            "id": 6,
+            "imgUrl": "https://i1.rozetka.ua/goods/1326509/apple_magic_keyboard_images_1326509072.png",
+            "manufacturer": "Apple",
+            "name": "Magic Keyboard",
             "category": "keyboard",
-            "price": 130,
-            "params": "white"
+            "price": 3369,
+            "params": "white,Wireless"
+        },
+        {
+            "id": 7,
+            "imgUrl": "https://i2.rozetka.ua/goods/18530646/acer_um_kv2ee_p01_images_18530646283.jpg",
+            "manufacturer": "Acer",
+            "name": "Nitro VG252QP",
+            "category": "monitor",
+            "price": 7199,
+            "params": "black,24.5"
+        },
+        {
+            "id": 8,
+            "imgUrl": "https://i8.rozetka.ua/goods/20106373/logitech_wireless_keyboard_k270_images_20106373801.jpg",
+            "manufacturer": "Logitech",
+            "name": "K270",
+            "category": "keyboard",
+            "price": 899,
+            "params": "black,Wireless"
         }
     ]
 }

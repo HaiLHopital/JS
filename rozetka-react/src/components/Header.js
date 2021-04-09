@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import logosvg from '../assets/img/logo_n.svg';
-import cart from '../assets/img/cart.svg';
+import cartsvg from '../assets/img/cart.svg';
 
 function Header() {
   return (
@@ -15,9 +15,9 @@ function Header() {
           </div>
         </Link>
 
-        <div className="cart">
+        <div className="cartIcon">
           <Link to="/cart">
-            <img src={cart} alt="cart"></img>
+            <img src={cartsvg} alt="cart"></img>
           </Link>
         </div>
       </div>

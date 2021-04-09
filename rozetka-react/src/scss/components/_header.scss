@@ -18,16 +18,19 @@
         color: $head-text;
       }
     }
+    a:link,
+    a:visited {
+      text-decoration: none;
+    }
   }
 
-  .cart {
+  .cartIcon {
     padding: 5px;
     border-radius: 8px;
-    display: flex;
     margin-right: 100px;
   }
 
-  .cart:hover {
+  .cartIcon:hover {
     background: rgb(77, 77, 77);
   }
 }
