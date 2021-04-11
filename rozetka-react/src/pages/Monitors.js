@@ -3,8 +3,8 @@ import { Header, MainBlock } from '../components';
 import { useSelector } from 'react-redux';
 
 function Monitors() {
-  const items = useSelector((products) =>
-    products.items.filter((value) => value.category === 'monitor'),
+  const items = useSelector((store) =>
+    store.products.items.filter((value) => value.category === 'monitor'),
   );
 
   return (

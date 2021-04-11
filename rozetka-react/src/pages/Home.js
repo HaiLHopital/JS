@@ -14,14 +14,14 @@ function Home() {
       });
   }, []);*/
 
-  const items = useSelector((products) => products.items);
+  const {items} = useSelector((products) => products.products);
 
   return (
     <div>
       <Header />
       <div className="mainContainer">
         <Categories />
-        <MainBlock products={items} />
+        <MainBlock products={items} />        {/*:TODO*/}
       </div>
     </div>
   );

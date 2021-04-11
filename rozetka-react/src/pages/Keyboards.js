@@ -3,8 +3,8 @@ import { Header, MainBlock } from '../components';
 import { useSelector } from 'react-redux';
 
 function Keyboards() {
-  const items = useSelector((products) =>
-    products.items.filter((value) => value.category === 'keyboard'),
+  const items = useSelector((store) =>
+    store.products.items.filter((value) => value.category === 'keyboard'),
   );
 
   return (

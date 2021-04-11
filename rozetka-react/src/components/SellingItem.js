@@ -1,19 +1,35 @@
 import React from 'react';
 import cartsvg from '../assets/img/addToCart.svg';
+import { useDispatch } from 'react-redux';
 
-function Item({ id, imgUrl, category, name, price, params }) {
+import addToCart from '../redux/actions/cart';
+
+function Item({ id, imgUrl, manufacturer, category, name, price, params }) {
+  const dispatch = useDispatch();
+  const handleAddProduct = () => {
+    dispatch(addToCart({ 
+      id, 
+      imgUrl, 
+      manufacturer, 
+      category, 
+      name, 
+      price, 
+      params 
+    }));
+  };
+
   return (
     <div className="sellingItem">
       <div className="tile_picture">
         <img className="image" src={imgUrl} alt="no pic sorry"></img>
       </div>
 
-      <h2>{category}</h2>
+      <h2>{manufacturer}</h2>
       <h3>{name}</h3>
       <h3>{price} &#8372;</h3>
-      <div className="addCart">
+      <button onClick={handleAddProduct} className="addCart">
         <img src={cartsvg} alt="cart"></img>
-      </div>
+      </button>
       <h4 className="params">{params}</h4>
     </div>
   );
