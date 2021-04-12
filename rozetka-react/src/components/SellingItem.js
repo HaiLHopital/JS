@@ -2,7 +2,7 @@ import React from 'react';
 import cartsvg from '../assets/img/addToCart.svg';
 import { useDispatch } from 'react-redux';
 
-import addToCart from '../redux/actions/cart';
+import {addToCart} from '../redux/actions/cart';
 
 function Item({ id, imgUrl, manufacturer, category, name, price, params }) {
   const dispatch = useDispatch();

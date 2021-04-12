@@ -47,10 +47,10 @@
   }
 }
 
-/*.sellingItem:hover {
+.sellingItem:hover {
   transform: scaleX(1.1) translateZ(4);
-
-  .params {
+  background: wheat;    //wtf
+  /*.params {
     display: block;
-  }
-}*/
+  }*/
+}
