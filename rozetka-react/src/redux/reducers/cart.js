@@ -16,8 +16,8 @@ const cart = (state = initialState, action) => {
         [action.payload.id]: currentProduct,
       };
 
-      const totalPrice = 11;
-      const totalCount = 11;
+      const totalPrice = [].concat.apply([], Object.values(newItems)).reduce((sum,obj)=>sum+obj.price,0);  //repeating of code, but idk how the fuck should I avoid this here, not now for sure
+      const totalCount = [].concat.apply([], Object.values(newItems)).length;
 
       return {
         ...state,
@@ -35,8 +35,8 @@ const cart = (state = initialState, action) => {
         [action.payload]: currentProduct,
       };
 
-      const totalPrice = 12;
-      const totalCount = 12;
+      const totalPrice = [].concat.apply([], Object.values(newItems)).reduce((sum,obj)=>sum+obj.price,0);
+      const totalCount = [].concat.apply([], Object.values(newItems)).length;
 
       return { ...state, items: newItems, totalCount, totalPrice };
     }
@@ -48,8 +48,10 @@ const cart = (state = initialState, action) => {
         ...state.items,
         [action.payload]: currentProduct,
       };
-      const totalPrice = 12;
-      const totalCount = 12;
+
+      const totalPrice = [].concat.apply([], Object.values(newItems)).reduce((sum,obj)=>sum+obj.price,0);
+      const totalCount = [].concat.apply([], Object.values(newItems)).length;
+
       return {
         ...state,
         items: newItems,
@@ -64,8 +66,8 @@ const cart = (state = initialState, action) => {
 
       delete newItems[action.payload];
 
-      const totalPrice = 13;
-      const totalCount = 13;
+      const totalPrice = [].concat.apply([], Object.values(newItems)).reduce((sum,obj)=>sum+obj.price,0);
+      const totalCount = [].concat.apply([], Object.values(newItems)).length;
 
       return {
         ...state,

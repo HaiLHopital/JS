@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import CartItem from '../components/CartItem';
 import { Header } from '../components';
-import {plusCartItem, minusCartItem, removeCartItem, clearCart} from '../redux/actions/cart'
+import { plusCartItem, minusCartItem, removeCartItem, clearCart } from '../redux/actions/cart';
 
 function Cart() {
   const dispatch = useDispatch();
@@ -12,29 +12,28 @@ function Cart() {
   //maybe it's better to store cartitems in different way, without adding every item as unic entrance
 
   const unicProducts = Object.keys(items).map((key) => items[key][0]);
-  
-  const onPlusCartItem=(id)=>{
-    dispatch(plusCartItem(id))
-  }
 
-  const onMinusCartItem=(id)=>{
-    dispatch(minusCartItem(id))
-  }
+  const onPlusCartItem = (id) => {
+    dispatch(plusCartItem(id));
+  };
 
-  const onRemoveCartItem=(id)=>{
-    dispatch(removeCartItem(id))
-  }
+  const onMinusCartItem = (id) => {
+    dispatch(minusCartItem(id));
+  };
+
+  const onRemoveCartItem = (id) => {
+    dispatch(removeCartItem(id));
+  };
 
   function onClearCart() {
-    if(window.confirm("вы действительно хотите очистить корзину?")){
-      dispatch(clearCart())
+    if (window.confirm('вы действительно хотите очистить корзину?')) {
+      dispatch(clearCart());
     }
   }
 
   return (
     <div>
       <Header />
-      <h1>Its a cart</h1>
       <div className="cart">
         {unicProducts.map((obj) => (
           <CartItem
@@ -45,13 +44,18 @@ function Cart() {
             category={obj.category}
             name={obj.name}
             price={obj.price}
-            onPlus= {onPlusCartItem}
-            onMinus= {onMinusCartItem}
+            onPlus={onPlusCartItem}
+            onMinus={onMinusCartItem}
             onRemove={onRemoveCartItem}
           />
         ))}
       </div>
-      <button onClick={onClearCart}>clear</button>
+
+      <div className="cart__info">
+        <h4>Количество: {totalCount}</h4>
+        <h4>Цена: {totalPrice} &#8372;</h4>
+      </div>
+      <button onClick={onClearCart}>Очистить корзину</button>
     </div>
   );
 }

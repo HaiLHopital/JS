@@ -1,20 +1,22 @@
 import { Header, Categories, MainBlock } from '../components';
+import { setCategory } from '../redux/actions/filters';
 
-import React from 'react';
-import { useSelector } from 'react-redux';
+
+import {React, useCallback,useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 function Home() {
-  //const [products, setProducts] = useState([]);
+  const { items } = useSelector((store) => store.products);
 
-  /*useEffect(() => {                                   idk if i should use axios, but since I know about it why not
-    fetch('http://localhost:3000/db.json')
-      .then((resp) => resp.json())
-      .then((json) => {
-        setProducts(json.products);
-      });
-  }, []);*/
+  const dispatch = useDispatch();
 
-  const {items} = useSelector((products) => products.products);
+  const selectCategory = useCallback(() => {
+    dispatch(setCategory(null)); // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    selectCategory(); // eslint-disable-next-line
+  }, []);
 
   return (
     <div>

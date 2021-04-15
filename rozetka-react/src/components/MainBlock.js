@@ -2,10 +2,10 @@ import React from 'react';
 
 import Item from './SellingItem';
 
-function MainBlock(props) {
+function MainBlock({products}) {
   return (
     <div className="displayedItems">
-      {props.products.map((item) => (
+      {products.map((item) => (
         <Item key={item.id} {...item} />
       ))}
     </div>

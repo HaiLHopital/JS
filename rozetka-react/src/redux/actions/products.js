@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-export const fetchProducts = () => (dispatch) => {
-  axios.get('http://localhost:3001/products').then(({ data }) => {
-    dispatch(setProducts(data));
-    
-  });
+export const fetchProducts = (category, manufacturer) => (dispatch) => {
+  axios
+    .get(`http://localhost:3001/products?${category !== null ? `category=${category}` : ''}`)
+    .then(({ data }) => {
+      //add backend filtering xd
+      dispatch(setProducts(data));
+    });
 };
 
 export const setProducts = (items) => ({

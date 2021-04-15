@@ -1,10 +1,36 @@
 .cart {
-  
-    display: flex;
-    flex-direction: column;
-  
+  display: flex;
+  flex-direction: column;
+
   &__item {
-      display: flex;
-      flex-direction: row;
+    margin: 10px;
+    padding: 10px;
+    width: 1000px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-top: 1px solid #e9e9e9
+  }
+
+  &__buttons {
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    background-color: #fff;
+  }
+
+  &__img {
+    padding: 5px;
+  height: 100px;
+  }
+
+  &__buttons:hover {
+    background: #f4faf6;
+  }
+
+  &__info{
+    padding-left: 40px;
+    display:list-item
   }
 }

@@ -6,23 +6,30 @@ function CartItem({ id, imgUrl, manufacturer, category, name, price, onPlus, onM
     onPlus(id);
   } //TODO
   function handleMinusCartItem() {
-    onMinus(id)
+    onMinus(id);
     console.log('-1');
   } //TODO
   function handleRemoveFromCart() {
-    onRemove(id)
+    onRemove(id);
     console.log('--1');
   }
 
   return (
     <div className="cart__item">
-      <h1>
+      <img src={imgUrl} className="cart__img" alt="sowwy no pic :("></img>
+      <p>
         {manufacturer} {name}
-      </h1>
-      <h2>{price} &#8372;</h2>
-      <button onClick={handlePlusCartItem}>+</button>
-      <button onClick={handleMinusCartItem}>-</button>
-      <button onClick={handleRemoveFromCart}>--</button>
+      </p>
+      <p>{price} &#8372;</p>
+      <button onClick={handleMinusCartItem} className="cart__buttons">
+        -
+      </button>
+      <button onClick={handlePlusCartItem} className="cart__buttons">
+        +
+      </button>
+      <button onClick={handleRemoveFromCart} className="cart__buttons">
+        &times;
+      </button>
     </div>
   );
 }
