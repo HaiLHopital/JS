@@ -2,16 +2,16 @@ import React from 'react';
 
 function CartItem({ id, imgUrl, manufacturer, category, name, price, onPlus, onMinus, onRemove }) {
   function handlePlusCartItem() {
-    console.log('+1');
+    
     onPlus(id);
   } //TODO
   function handleMinusCartItem() {
     onMinus(id);
-    console.log('-1');
+    
   } //TODO
   function handleRemoveFromCart() {
     onRemove(id);
-    console.log('--1');
+    
   }
 
   return (

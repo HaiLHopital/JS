@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { React, useCallback, useEffect } from 'react';
+import { React, useCallback, useEffect, useState } from 'react';
 
 import { Header, MainBlock } from '../components';
-import { setCategory } from '../redux/actions/filters';
+import { setCategory, setManufacturer } from '../redux/actions/filters';
 
 function Monitors() {
   const { items } = useSelector((store) => store.products);
@@ -17,6 +17,25 @@ function Monitors() {
     selectCategory(); // eslint-disable-next-line
   }, []);
 
+  //manufact sort change
+  const [manufacturer, onSetManufacturer] = useState({
+    Samsung: false,
+    Acer: false,
+  });
+
+  const handleSetManufacturer = (event) => {
+    const id = event.target.id;
+    onSetManufacturer((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const selectManufacturer = useCallback((manufacturer) => {
+    dispatch(setManufacturer(manufacturer)); // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
+    selectManufacturer(manufacturer); // eslint-disable-next-line
+  }, [manufacturer]);
+
   return (
     <div>
       <Header />
@@ -24,11 +43,12 @@ function Monitors() {
       <h1>Monitors</h1>
       <div className="mainContainer">
         <div className="categories">
-        {/*<form className="sortMenu">
-            <input type="checkbox" id="123"/><label for="123">kekw</label>
-            <input type="checkbox" id="456"/><label for="456">kekw1</label>
-            <input type="checkbox" id="789"/><label for="789">kekw2</label>
-  </form>*/}
+          <form className="sortMenu">
+            <input type="checkbox" id="Samsung" onChange={handleSetManufacturer} />
+            <label>Samsung</label>
+            <input type="checkbox" id="Acer" onChange={handleSetManufacturer} />
+            <label>Acer</label>
+          </form>
         </div>
         <MainBlock products={items} />
       </div>

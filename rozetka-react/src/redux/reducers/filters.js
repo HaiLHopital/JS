@@ -1,6 +1,6 @@
 const initialState = {
   category: null,
-  manufacturer: null,
+  manufacturer: {},
 };
 
 const filter = (state = initialState, action) => {
@@ -8,6 +8,7 @@ const filter = (state = initialState, action) => {
     return {
       ...state,
       category: action.payload,
+      manufacturer: null,
     };
   }
 

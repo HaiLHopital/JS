@@ -9,10 +9,10 @@ function App() {
   const dispatch = useDispatch();
 
   const { category, manufacturer } = useSelector((state) => state.filter);
-  console.log(category, manufacturer);
+  
 
   useEffect(() => {
-    console.log(1213)
+    
     // need to suscribe dispatch to changes in filter and move sort to backend
     dispatch(fetchProducts(category, manufacturer)); // eslint-disable-next-line
   }, [category, manufacturer]);

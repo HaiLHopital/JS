@@ -29,7 +29,6 @@ const cart = (state = initialState, action) => {
     case 'plus_cart_item': {
       const currentProduct = [...state.items[action.payload], state.items[action.payload][0]];
 
-      console.log(currentProduct);
       const newItems = {
         ...state.items,
         [action.payload]: currentProduct,
