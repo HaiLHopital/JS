@@ -1,4 +1,4 @@
-#first practical reat usage
+#first practical react usage
 
 I took rozetka.com.ua as an inspiration
 site has a 4 pages for "home", "monitors", "keyboards" and a "cart"
