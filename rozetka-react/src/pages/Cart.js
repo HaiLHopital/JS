@@ -11,7 +11,10 @@ function Cart() {
 
   //maybe it's better to store cartitems in different way, without adding every item as unic entrance
 
-  const unicProducts = Object.keys(items).map((key) => items[key][0]);
+  const unicProducts = Object.keys(items).map((key) => ({
+    ...items[key][0],
+    number: items[key].length,
+  }));
 
   const onPlusCartItem = (id) => {
     dispatch(plusCartItem(id));
@@ -26,7 +29,7 @@ function Cart() {
   };
 
   function onClearCart() {
-    if (window.confirm('вы действительно хотите очистить корзину?')) {
+    if (window.confirm('Вы действительно хотите очистить корзину?')) {
       dispatch(clearCart());
     }
   }
@@ -44,6 +47,7 @@ function Cart() {
             category={obj.category}
             name={obj.name}
             price={obj.price}
+            number={obj.number}
             onPlus={onPlusCartItem}
             onMinus={onMinusCartItem}
             onRemove={onRemoveCartItem}
@@ -55,7 +59,9 @@ function Cart() {
         <h4>Количество: {totalCount}</h4>
         <h4>Цена: {totalPrice} &#8372;</h4>
       </div>
-      <button onClick={onClearCart}>Очистить корзину</button>
+      <button onClick={onClearCart} className="cart__clear_button">
+        Очистить корзину
+      </button>
     </div>
   );
 }

@@ -1,4 +1,8 @@
-.displayedItems{
+.mainContainer {
+  display: flex;
+  
+  .displayedItems {
     display: flex;
     flex-wrap: wrap;
+  }
 }

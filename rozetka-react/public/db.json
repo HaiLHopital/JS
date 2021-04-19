@@ -6,8 +6,7 @@
             "manufacturer": "Samsung",
             "name": "Odyssey G5 LC27G54T",
             "category": "monitor",
-            "price": 7999,
-            "params": "black, 27"
+            "price": 7999
         },
         {
             "id": 1,
@@ -15,8 +14,7 @@
             "manufacturer": "HyperX",
             "name": "Alloy Core",
             "category": "keyboard",
-            "price": 1799,
-            "params": "black, RGB, USB"
+            "price": 1799
         },
         {
             "id": 2,
@@ -24,8 +22,7 @@
             "manufacturer": "Logitech",
             "name": "MX Keys",
             "category": "keyboard",
-            "price": 3599,
-            "params": "black, Wireless"
+            "price": 3599
         },
         {
             "id": 3,
@@ -33,8 +30,7 @@
             "manufacturer": "Acer",
             "name": "KA252Qbmix",
             "category": "monitor",
-            "price": 4099,
-            "params": "black,24.5"
+            "price": 4099
         },
         {
             "id": 4,
@@ -42,8 +38,7 @@
             "manufacturer": "Samsung",
             "name": "C27F396F",
             "category": "monitor",
-            "price": 4444,
-            "params": "black,27,Curved"
+            "price": 4444
         },
         {
             "id": 5,
@@ -51,8 +46,7 @@
             "manufacturer": "Samsung",
             "name": "F24T350FHI",
             "category": "monitor",
-            "price": 3599,
-            "params": "Dark Gray,23.8"
+            "price": 3599
         },
         {
             "id": 6,
@@ -60,8 +54,7 @@
             "manufacturer": "Apple",
             "name": "Magic Keyboard",
             "category": "keyboard",
-            "price": 3369,
-            "params": "white,Wireless"
+            "price": 3369
         },
         {
             "id": 7,
@@ -69,8 +62,7 @@
             "manufacturer": "Acer",
             "name": "Nitro VG252QP",
             "category": "monitor",
-            "price": 7199,
-            "params": "black,24.5"
+            "price": 7199
         },
         {
             "id": 8,
@@ -78,8 +70,7 @@
             "manufacturer": "Logitech",
             "name": "K270",
             "category": "keyboard",
-            "price": 899,
-            "params": "black,Wireless"
+            "price": 899
         }
     ]
 }

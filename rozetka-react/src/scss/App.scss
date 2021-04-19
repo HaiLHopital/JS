@@ -8,3 +8,9 @@ body{
 ol,ul {
   list-style: none;
 }
+
+button, 
+button:active, 
+button:focus {
+    outline: none;
+}

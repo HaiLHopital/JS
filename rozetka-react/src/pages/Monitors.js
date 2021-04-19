@@ -43,11 +43,11 @@ function Monitors() {
       <h1>Monitors</h1>
       <div className="mainContainer">
         <div className="categories">
-          <form className="sortMenu">
-            <input type="checkbox" id="Samsung" onChange={handleSetManufacturer} />
-            <label>Samsung</label>
-            <input type="checkbox" id="Acer" onChange={handleSetManufacturer} />
-            <label>Acer</label>
+          <form className="sort_menu">
+            <label><input type="checkbox" id="Samsung" onChange={handleSetManufacturer} />
+            Samsung</label>
+            <label><input type="checkbox" id="Acer" onChange={handleSetManufacturer} />
+            Acer</label>
           </form>
         </div>
         <MainBlock products={items} />

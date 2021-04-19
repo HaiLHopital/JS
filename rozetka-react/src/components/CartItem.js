@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CartItem({ id, imgUrl, manufacturer, category, name, price, onPlus, onMinus, onRemove }) {
+function CartItem({ id, imgUrl, manufacturer, number, name, price, onPlus, onMinus, onRemove }) {
   function handlePlusCartItem() {
     
     onPlus(id);
@@ -20,10 +20,11 @@ function CartItem({ id, imgUrl, manufacturer, category, name, price, onPlus, onM
       <p>
         {manufacturer} {name}
       </p>
-      <p>{price} &#8372;</p>
+      <p className="cart__item_price">  {price} &#8372;</p>
       <button onClick={handleMinusCartItem} className="cart__buttons">
         -
       </button>
+      <p>{number}</p>
       <button onClick={handlePlusCartItem} className="cart__buttons">
         +
       </button>

@@ -9,8 +9,12 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    border-top: 1px solid #e9e9e9
+    border-top: 1px solid $border-color
   }
+  
+  &__item_price{
+      margin-left: 20px ;
+    }
 
   &__buttons {
     width: 35px;
@@ -32,5 +36,9 @@
   &__info{
     padding-left: 40px;
     display:list-item
+  }
+
+  &__clear_button{
+    margin-left: 100px;
   }
 }

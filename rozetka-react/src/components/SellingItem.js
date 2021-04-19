@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import {addToCart} from '../redux/actions/cart';
 
-function Item({ id, imgUrl, manufacturer, category, name, price, params }) {
+function Item({ id, imgUrl, manufacturer, category, name, price}) {
   const dispatch = useDispatch();
   const handleAddProduct = () => {
     dispatch(addToCart({ 
@@ -13,14 +13,14 @@ function Item({ id, imgUrl, manufacturer, category, name, price, params }) {
       manufacturer, 
       category, 
       name, 
-      price, 
-      params 
+      price
     }));
   };
 
   return (
-    <div className="sellingItem">
-      <div className="tile_picture">
+    
+    <div className="selling-item">
+      <div className="tile-picture">
         <img className="image" src={imgUrl} alt="no pic sorry"></img>
       </div>
 
@@ -30,8 +30,8 @@ function Item({ id, imgUrl, manufacturer, category, name, price, params }) {
       <button onClick={handleAddProduct} className="addCart">
         <img src={cartsvg} alt="cart"></img>
       </button>
-      <h4 className="params">{params}</h4>
     </div>
+    
   );
 }
 

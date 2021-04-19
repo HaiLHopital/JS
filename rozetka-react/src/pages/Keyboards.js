@@ -48,18 +48,15 @@ function Keyboards() {
       <h1>Keyboards</h1>
       <div className="mainContainer">
         <div className="categories">
-          <form className="sortMenu">
-            <input type="checkbox" id="HyperX" onChange={handleSetManufacturer} />
-            <label>hyperx</label>
-            <input type="checkbox" id="Logitech" onChange={handleSetManufacturer} />
-            <label>logitech</label>
-            <input type="checkbox" id="Apple" onChange={handleSetManufacturer} />
-            <label>apple</label>
+          <form className="sort_menu">
+            <label><input type="checkbox" id="HyperX" onChange={handleSetManufacturer} />
+            hyperx</label>
+            <label><input type="checkbox" id="Logitech" onChange={handleSetManufacturer} />
+            logitech</label>
+            <label><input type="checkbox" id="Apple" onChange={handleSetManufacturer} />
+            apple</label>
           </form>
-          <br />
-          <p>{Object.values(manufacturer)[0] ? 1 : 0}</p>
-          <p>{Object.values(manufacturer)[1] ? 1 : 0}</p>
-          <p>{Object.values(manufacturer)[2] ? 1 : 0}</p>
+          
         </div>
         <MainBlock products={items} />
       </div>
