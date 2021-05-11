@@ -7,7 +7,8 @@ const { User } = require('../models/models');
 //  and I probably should move logic into service files :/
 
 function generateToken(id, login, role) {
-  return jwt.sign({ id, login, role }, process.env.SECRET_KEY, { expiresIn: '24h' });
+  const payload = { id, login, role };
+  return jwt.sign(payload, process.env.SECRET_KEY, { expiresIn: '24h' });
 }
 
 class userController {
@@ -41,7 +42,8 @@ class userController {
   }
 
   async check(req, res, next) {
-    res.json({msg:'wqwq'})
+    const token = generateToken(req.user.id, req.user.login, req.user.role);
+    return res.json(token);
   }
 }
 

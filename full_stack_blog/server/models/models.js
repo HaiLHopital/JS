@@ -32,3 +32,5 @@ module.exports={
     Post, 
     Comment
 };
+
+//Idk if it's bettter to make a role table just so they are fixed in some way
