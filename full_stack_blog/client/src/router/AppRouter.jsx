@@ -6,7 +6,7 @@ export default function AppRouter() {
   return (
     <Switch>
       {routes.map(({ path, Component }) => 
-        <Route exact path={path} component={Component} />
+        <Route exact key={path} path={path} component={Component} />
       )}
 
     </Switch>
