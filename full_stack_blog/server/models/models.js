@@ -10,12 +10,12 @@ const User = sequelize.define('user', {
 
 const Post = sequelize.define('post', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  text: { type: DataTypes.STRING },
+  text: { type: DataTypes.TEXT },
 });
 
 const Comment = sequelize.define('comment', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  text: { type: DataTypes.STRING},
+  text: { type: DataTypes.TEXT},
 });
 
 User.hasMany(Post);

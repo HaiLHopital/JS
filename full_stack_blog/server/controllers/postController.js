@@ -3,6 +3,7 @@ const ApiError = require('../error/ApiError');
 
 //   probably need more validation and chcking for correct data but for now should be ok
 //  and I probably should move logic into service files :/
+// and should be added paggination 
 
 class postController {
   async create(req, res, next) {
@@ -16,7 +17,7 @@ class postController {
   }
   async getAll(req, res) {
     const posts = await Post.findAll();
-    return res.json(posts);
+    return res.json(posts.reverse());
   }
   async getAllFromUser(req, res) {
     const { id } = req.params;

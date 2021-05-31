@@ -16,6 +16,7 @@ function NavBar() {
     localStorage.removeItem("token")
     dispatch(logOut());
   };
+  
   return (
     <Navbar bg="dark" variant="dark">
       <NavLink to={MAIN_ROUTE}>Blog</NavLink>
