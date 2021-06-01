@@ -16,7 +16,7 @@ function Home() {
   return (
     <Container>
       {isAuth ? <AddPost /> : <Card> Register or log in to add posts</Card>}
-      {items/*.reverse()*/.map((post, id) => (
+      {items.map((post, id) => (
         <Post key={id} {...post} />
       ))}
     </Container>

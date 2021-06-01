@@ -1,31 +1,14 @@
-import { React, useState } from 'react';
-import { Button, Card, Collapse, Form } from 'react-bootstrap';
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import Comment from './Comment';
 
-function Post({ author, text }) {
-  const [open, setOpen] = useState(false);
-
-  function addComment() {
-    setOpen(!open);
-    console.log(author);
-  }
+function Post({ author, text, id }) {
   return (
-    <Card >
+    <Card>
       <Card.Body>
         <Card.Title>{author}</Card.Title>
         <Card.Text>{text}</Card.Text>
-        <Button onClick={addComment}>comment</Button>
-        <Collapse in={open}>
-          <Form>
-            <Form.Group >
-              <Form.Label>Enter yout comment</Form.Label>
-              <Form.Control type="text" placeholder="..." />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </Collapse>
+        <Comment postId={id}/>
       </Card.Body>
     </Card>
   );

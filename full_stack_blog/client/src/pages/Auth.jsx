@@ -16,13 +16,12 @@ export default function Auth() {
 
   const click = async () => {
     try {
-      let data;
+       
       if (isRegistration) {
-        data = await registration(login, password);
+        let data = await registration(login, password);
         dispatch(register(data));
-        console.log(data);
       } else {
-        data = await loginReq(login, password);
+        let data = await loginReq(login, password);
         dispatch(logIn(data));
       }
       
