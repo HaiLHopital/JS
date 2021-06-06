@@ -1,4 +1,4 @@
-const { Comment } = require('../models/models');
+const { Comment, User } = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 //   probably need more validation and chcking for correct data but for now should be ok
@@ -17,9 +17,12 @@ class commentController {
 
   async getAll(req, res) {
     try {
-      const {id} = req.params;
-      const comment = await Comment.findAll({where: {postId:id}})
-      return res.json(comment)
+      const { id } = req.params;
+      const comment = await Comment.findAll({
+        where: { postId: id },
+        include: { model: User, attributes: ['login'], order: [['createdAt', 'ASC']] },
+      });
+      return res.json(comment);
     } catch (error) {
       next(ApiError.badRequest(error.message));
     }
@@ -27,11 +30,11 @@ class commentController {
 
   async delete(req, res, next) {
     try {
-      const {id}=req.params
-      const comment = await Comment.destroy({where:{id}})
-      return res.json(comment)
+      const { id } = req.params;
+      const comment = await Comment.destroy({ where: { id } });
+      return res.json(comment);
     } catch (error) {
-      next(ApiError.internal('permission denied'))
+      next(ApiError.internal('permission denied'));
     }
   }
 }

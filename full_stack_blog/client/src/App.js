@@ -6,6 +6,7 @@ import { check } from './http/userAPI.js';
 import { useDispatch } from 'react-redux';
 import { logIn } from './redux/actions/user.js';
 import { Spinner } from 'react-bootstrap';
+import ScrollToTop from './router/scrollToTop'
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop/>
       <NavBar />
       <AppRouter />
     </Router>

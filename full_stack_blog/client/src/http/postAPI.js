@@ -3,7 +3,7 @@ import { setPosts } from '../redux/actions/post';
 import { setComments } from '../redux/actions/comment';
 
 export const createPost = async (userId, text) => {
-  await $authHost.post('api/posts/', { text, userId });
+  return await $authHost.post('api/posts/', { text, userId });
 };
 
 export const fetchPosts = () => {
@@ -14,8 +14,16 @@ export const fetchPosts = () => {
   };
 };
 
+export const fetchPostsUser = (id) => {
+  return (dispatch) => {
+    $host.get(`api/posts/user/${id}`).then(({ data }) => {
+      dispatch(setPosts(data));
+    });
+  };
+};
+
 export const createComment = async (userId, postId, text) => {
-  await $authHost.post('api/comments/', { text, userId, postId });
+  return await $authHost.post('api/comments/', { text, userId, postId });
 };
 
 export const fetchComments = (postId) => {
