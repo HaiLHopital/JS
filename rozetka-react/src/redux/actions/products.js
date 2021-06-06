@@ -7,8 +7,6 @@ export const fetchProducts = (category, manufacturer) => (dispatch) => {
     return keys.length > 0 ? '&manufacturer='.concat(keys.join('&manufacturer=')) : '';
   };
 
-
-
   axios
     .get(
       `http://localhost:3001/products?${
