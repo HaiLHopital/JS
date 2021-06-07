@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import { Container, Form, Card, Button, Row } from 'react-bootstrap';
 import { LOGIN_ROUTE, MAIN_ROUTE, REGISTRATION_ROUTE } from '../router/consts';
@@ -16,7 +16,6 @@ export default function Auth() {
 
   const click = async () => {
     try {
-       
       if (isRegistration) {
         let data = await registration(login, password);
         dispatch(register(data));
@@ -24,7 +23,7 @@ export default function Auth() {
         let data = await loginReq(login, password);
         dispatch(logIn(data));
       }
-      
+
       history.push(MAIN_ROUTE);
     } catch (error) {
       alert(error.response.data.message);

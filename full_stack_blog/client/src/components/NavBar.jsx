@@ -19,7 +19,7 @@ function NavBar() {
   
   return (
     <Navbar bg="dark" variant="dark">
-      <NavLink to={MAIN_ROUTE}>Blog</NavLink>
+      <NavLink style={{color:'white'}} to={MAIN_ROUTE}>Blog</NavLink>
       <Nav className="ml-auto">
         {!isAuth ? (
           <Button
