@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "iHUB-test",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
