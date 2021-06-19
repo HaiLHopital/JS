@@ -1,5 +1,5 @@
 import { Action, createAction, createAsyncThunk, createReducer, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { gettingCurrentSlide} from '../components/HourSlider'
+import gettingCurrentSlide from '../services/currentSlide'
 import { DateType, HoursType } from '../types/timeTypes'
 
 interface DateState {
@@ -15,6 +15,15 @@ const initialState = {
   chosenD:{day:0,date:0} as DateType,
   chosenH:{hhmm:''} as HoursType} as DateState
 
+//handling async rquest for slide changes
+export const fetchDate = createAsyncThunk(       
+  "fetchDate",
+  async (ref:React.MutableRefObject<any>)  => {
+    const resp= await gettingCurrentSlide(ref)
+    return resp
+  }
+)
+
 export const fetchHour = createAsyncThunk(
   "fetchHour",
   async (ref:React.MutableRefObject<any>)  => {
@@ -22,6 +31,8 @@ export const fetchHour = createAsyncThunk(
     return resp
   }
 )
+
+
 
 const dateSlice = createSlice({
   name:"date",
@@ -36,10 +47,14 @@ const dateSlice = createSlice({
       state.chosenH=action.payload[0]
     }
   },
-  extraReducers:{//[async.fulfilled]:(state,action)=>{
-
-  //}
-}
+  extraReducers:{
+    [fetchDate.fulfilled.type]:(state,action)=>{
+      state.chosenD=state.days[action.payload]
+    },
+    [fetchHour.fulfilled.type]:(state,action)=>{
+      state.chosenH=state.times[action.payload]
+    }
+  }
 })
 
 export const {setDay, setTime}=dateSlice.actions

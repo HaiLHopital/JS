@@ -48,16 +48,17 @@ let hours1 = [0, 5, 10, 11, 12, 13, 14, 15];
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
+  const initialData = getInitialData();
   useEffect(() => {
-    const initialData = getInitialData(); // this function generates 20 days and hours starting from current time
+     // this function generates 20 days and hours starting from current time
 
     dispatch(setDay(initialData.days));
     dispatch(setTime(initialData.hours)); // filling state with initial data
     
   }, []);
 
-  let DatesComponent = AppDate(dates);
-  let HourComponent = AppHour(hours1);
+  let DatesComponent = AppDate(initialData.days);
+  let HourComponent = AppHour(initialData.hours);
   return (
     <IonPage>
       <IonContent>

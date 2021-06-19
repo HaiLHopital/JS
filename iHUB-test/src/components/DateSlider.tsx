@@ -1,8 +1,12 @@
 import React, { useRef } from 'react';
 import { IonSlides, IonSlide, IonContent } from '@ionic/react';
+import { DateType } from '../types/timeTypes';
+import gettingCurrentSlide from '../services/currentSlide';
+import { useAppDispatch } from '../hooks/reduxHooks';
+import { fetchDate } from '../store/dateSlice';
 
 const slideOpts = {
-  initialSlide: 1,
+  initialSlide: 0,
   speed: 400,
   slidesPerView: 4,
 };
@@ -10,10 +14,12 @@ const slideOpts = {
 const SliderDate: React.FC<IDate> = (dates) => {
   const slideRef = useRef<any>();
 
-  const handleSlideChange = () => {
-  slideRef.current.getActiveIndex().then((v:any)=>console.log(v)) 
-  };
+  const dispatch = useAppDispatch();
 
+  const handleSlideChange = async () => {
+    const resp = await gettingCurrentSlide(slideRef);
+    dispatch(fetchDate(slideRef))
+  };
   
   return (
     <>
@@ -21,7 +27,7 @@ const SliderDate: React.FC<IDate> = (dates) => {
       <IonSlides ref={slideRef} onIonSlideDidChange={handleSlideChange} options={slideOpts}>
         {dates.data.map((item, index) => (
           <IonSlide key={index}>
-            <h1>{item}</h1>
+            <h1>{item.date}</h1>
           </IonSlide>
         ))}
       </IonSlides>
@@ -31,11 +37,11 @@ const SliderDate: React.FC<IDate> = (dates) => {
 
 export interface IDate {
   type: 'IDate';
-  data: number[];
+  data: DateType[];
   slider: React.FC<IDate>;
 }
 
-export const AppDate = (x: number[]): IDate => ({
+export const AppDate = (x: DateType[]): IDate => ({
   type: 'IDate',
   data: x,
   slider: SliderDate,

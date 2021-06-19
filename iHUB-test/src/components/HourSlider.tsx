@@ -4,17 +4,14 @@ import { fetchHour, setTime } from '../store/dateSlice';
 import { AppDispatch } from '../store';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { useAppDispatch } from '../hooks/reduxHooks';
+import { HoursType } from '../types/timeTypes';
+import gettingCurrentSlide from '../services/currentSlide';
 
 const slideOpts = {
-  initialSlide: 1,
+  initialSlide: 0,
   speed: 400,
   slidesPerView: 4,
 };
-
-export const gettingCurrentSlide = async (ref:React.MutableRefObject<any>) => {
-  const resp = await ref.current.getActiveIndex();
-  return resp
-}
 
 const SliderHour: React.FC<IHour> = (hours) => {
   const slideRef = useRef<any>();
@@ -23,16 +20,15 @@ const SliderHour: React.FC<IHour> = (hours) => {
   const handleSlideChange = async () => {
     const resp = await gettingCurrentSlide(slideRef);
     dispatch(fetchHour(slideRef))
-    console.log(resp)
   };
 
   return (
     <>
-      <h1>время</h1>
+      <h1>Время</h1>
       <IonSlides ref={slideRef} onIonSlideDidChange={handleSlideChange} options={slideOpts}>
         {hours.data.map((item, index) => (
           <IonSlide key={index}>
-            <h1>{item}</h1>
+            <h1>{item.hhmm}</h1>
           </IonSlide>
         ))}
       </IonSlides>
@@ -42,11 +38,11 @@ const SliderHour: React.FC<IHour> = (hours) => {
 
 export interface IHour {
   type: 'IDate';
-  data: number[];
+  data: HoursType[];
   slider: React.FC<IHour>;
 }
 
-export const AppHour = (x: number[]): IHour => ({
+export const AppHour = (x: HoursType[]): IHour => ({
   type: 'IDate',
   data: x,
   slider: SliderHour,
