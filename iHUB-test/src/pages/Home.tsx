@@ -9,52 +9,36 @@ import { getInitialData } from '../services/fillingDates';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import { setDay, setTime } from '../store/dateSlice';
 import { useEffect } from 'react';
+import { docRef } from '../App';
+import { useCollectionOnce } from 'react-firebase-hooks/firestore';
 
-//interface A {
-//  type: 'A';
-//  say: () => void;
-//}
 //
-//interface B {
-//  type: 'B';
-//  say: () => void;
-//}
+//const getActiveDate = () => {
+//  docRef.doc('datetime').get().then((doc)=>{
+//   if (doc.exists) {
+//       console.log("Document data:", doc.data());
+//       return doc.data()
+//   } else {
+//       // doc.data() will be undefined in this case
+//       console.log("No such document!");
+//   }
+//}).catch((error) => {
+//   console.log("Error getting document:", error);
+//})
 //
-//const sayA = (): void => console.log('sayA');
-//const a = (): A => ({
-//  type: 'A',
-//  say: sayA,
-//});
-//let aword=a()
-//const sayB = (): void => console.log('sayB');
-//const b = (): B => ({
-//  type: 'B',
-//  say: sayB,
-//});
-//let bword=b()
-//const saySomething = (x: A | B): void =>{ x.say()};
-//saySomething(aword)
-//saySomething(bword)
-
-let dates = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-let hours1 = [0, 5, 10, 11, 12, 13, 14, 15];
-
-// this logic should be 100% moved from page
-
-// I generaly think day/hour/min should be taken from backend, but for now I'll
-//  get 20 of each just for demonstration
-
-//may be I'll refactor it later if I'll have time
-
+//};
+//
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
-  const initialData = getInitialData();
-  useEffect(() => {
-     // this function generates 20 days and hours starting from current time
+  const initialData = getInitialData(); // this function generates 20 days and hours starting from current time
 
+  //getting date written in db, using react-firebase-hooks to avoid promises
+  const [snapshot] = useCollectionOnce(docRef);
+  const datetime = snapshot?.docs[0].data().datetime;
+
+  useEffect(() => {
     dispatch(setDay(initialData.days));
     dispatch(setTime(initialData.hours)); // filling state with initial data
-    
   }, []);
 
   let DatesComponent = AppDate(initialData.days);

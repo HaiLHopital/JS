@@ -6,7 +6,7 @@ import { DateType, HoursType } from '../types/timeTypes';
 
 export const getInitialData = () => {
   const currentTime: Date = new Date();
-  console.log(currentTime);
+  //console.log(currentTime);
 
   const setDateType = (prop: Date): DateType => {
     return { day: prop.getDay(), date: prop.getDate() };

@@ -24,6 +24,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import { time } from 'console';
 
 firebase.initializeApp({
   apiKey: 'AIzaSyA9d8pSfgEM4FeQ5bhqKfFlSJylc5xkndk',
@@ -36,6 +37,9 @@ firebase.initializeApp({
 });
 
 const firestore = firebase.firestore()
+
+export const docRef=firestore.collection("subscriptions")
+
 
 const App: React.FC = () => (
   <IonApp>
