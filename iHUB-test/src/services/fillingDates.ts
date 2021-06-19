@@ -1,7 +1,6 @@
 // I generaly think day/hour/min should be taken from backend, but for now I'll
 //  get 20 of each just for demonstration
 
-//may be I'll refactor it later if I'll have time
 import { DateType, HoursType } from '../types/timeTypes';
 
 export const getInitialData = () => {
@@ -33,7 +32,6 @@ export const getInitialData = () => {
   }
 
   for (let i = 0; i < 20; i++) {
-    //probably should be fixed
     const currentTime: Date = new Date();
     currentTime.setHours(currentTime.getHours() + i);
     hours.push(setHoursType(currentTime));

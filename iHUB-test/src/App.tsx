@@ -3,6 +3,7 @@ import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 
+
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -23,9 +24,10 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 /* Theme variables */
-import './theme/variables.css';
+//import './theme/variables.css';
 import { time } from 'console';
 
+//init firebase
 firebase.initializeApp({
   apiKey: 'AIzaSyA9d8pSfgEM4FeQ5bhqKfFlSJylc5xkndk',
   authDomain: 'ihub-test-b12f6.firebaseapp.com',
@@ -40,9 +42,8 @@ const firestore = firebase.firestore()
 
 export const docRef=firestore.collection("subscriptions")
 
-
-const App: React.FC = () => (
-  <IonApp>
+const App: React.FC = () => {
+   return  (<IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route exact path="/home">
@@ -53,7 +54,9 @@ const App: React.FC = () => (
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
-  </IonApp>
-);
+  </IonApp>)
+  
+}
+  
 
 export default App;

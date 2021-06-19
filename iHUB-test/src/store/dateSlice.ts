@@ -1,4 +1,4 @@
-import { Action, createAction, createAsyncThunk, createReducer, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {  createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import gettingCurrentSlide from '../services/currentSlide'
 import { DateType, HoursType } from '../types/timeTypes'
 
@@ -33,18 +33,23 @@ export const fetchHour = createAsyncThunk(
 )
 
 
-
 const dateSlice = createSlice({
   name:"date",
   initialState,
   reducers:{
-    setDay(state,action:PayloadAction<DateType[]>){
+    setDays(state,action:PayloadAction<DateType[]>){
       state.days=action.payload
       state.chosenD=action.payload[0]
     },
-    setTime(state,action:PayloadAction<HoursType[]>){
+    setTimes(state,action:PayloadAction<HoursType[]>){
       state.times=action.payload
       state.chosenH=action.payload[0]
+    },
+    setActiveDay(state,action:PayloadAction<DateType>){
+      state.chosenD=action.payload
+    },
+    setActiveTime(state,action:PayloadAction<HoursType>){
+      state.chosenH=action.payload
     }
   },
   extraReducers:{
@@ -57,5 +62,5 @@ const dateSlice = createSlice({
   }
 })
 
-export const {setDay, setTime}=dateSlice.actions
+export const {setDays, setTimes,setActiveDay,setActiveTime}=dateSlice.actions
 export default dateSlice.reducer

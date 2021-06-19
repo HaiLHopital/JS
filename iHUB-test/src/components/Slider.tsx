@@ -1,10 +1,6 @@
-// Optional parameters to pass to the swiper instance.
-// See http://idangero.us/swiper/api/ for valid options.
 
-import { IDate } from './DateSlider';
-import { IHour } from './HourSlider';
+//factory function, returns Func Component, for each IHour and IDate different 
 
 export const Slider: React.FC<any> = (props) => {
-  
   return props.slider(props);
 };

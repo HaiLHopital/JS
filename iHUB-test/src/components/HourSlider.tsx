@@ -1,11 +1,8 @@
 import React, { useRef } from 'react';
-import { IonSlides, IonSlide, IonContent } from '@ionic/react';
-import { fetchHour, setTime } from '../store/dateSlice';
-import { AppDispatch } from '../store';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { IonSlides, IonSlide } from '@ionic/react';
+import { fetchHour } from '../store/dateSlice';
 import { useAppDispatch } from '../hooks/reduxHooks';
 import { HoursType } from '../types/timeTypes';
-import gettingCurrentSlide from '../services/currentSlide';
 
 const slideOpts = {
   initialSlide: 0,
@@ -13,18 +10,20 @@ const slideOpts = {
   slidesPerView: 4,
 };
 
+//React Component for Hours Slider
 const SliderHour: React.FC<IHour> = (hours) => {
-  const slideRef = useRef<any>();
+  const slideRef = useRef<any>(); //ref to get acces to swiper
   const dispatch = useAppDispatch();
 
+  //handling async action on slide change
   const handleSlideChange = async () => {
-    const resp = await gettingCurrentSlide(slideRef);
     dispatch(fetchHour(slideRef))
   };
 
   return (
-    <>
-      <h1>Время</h1>
+    <><div style={{display:"flex",
+    flexDirection:"column"}}></div>
+      <h1>Свободное время</h1>
       <IonSlides ref={slideRef} onIonSlideDidChange={handleSlideChange} options={slideOpts}>
         {hours.data.map((item, index) => (
           <IonSlide key={index}>
@@ -36,12 +35,14 @@ const SliderHour: React.FC<IHour> = (hours) => {
   );
 };
 
+//IHour object wich has react component as method
 export interface IHour {
   type: 'IDate';
   data: HoursType[];
   slider: React.FC<IHour>;
 }
 
+//factory fanction wich return IHour objeect
 export const AppHour = (x: HoursType[]): IHour => ({
   type: 'IDate',
   data: x,
