@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { useRef } from 'react';
 import { IonSlides, IonSlide, IonContent } from '@ionic/react';
 
 const slideOpts = {
@@ -8,11 +8,18 @@ const slideOpts = {
 };
 
 const SliderDate: React.FC<IDate> = (dates) => {
-    console.log(dates)
+  const slideRef = useRef<any>();
+
+  const handleSlideChange = () => {
+  slideRef.current.getActiveIndex().then((v:any)=>console.log(v)) 
+  };
+
+  
   return (
     <>
-      <IonSlides options={slideOpts}>
-        {dates.data.map((item,index) => (
+      <h1>День</h1>
+      <IonSlides ref={slideRef} onIonSlideDidChange={handleSlideChange} options={slideOpts}>
+        {dates.data.map((item, index) => (
           <IonSlide key={index}>
             <h1>{item}</h1>
           </IonSlide>
@@ -28,7 +35,7 @@ export interface IDate {
   slider: React.FC<IDate>;
 }
 
-export const Date = (x: number[]): IDate => ({
+export const AppDate = (x: number[]): IDate => ({
   type: 'IDate',
   data: x,
   slider: SliderDate,
