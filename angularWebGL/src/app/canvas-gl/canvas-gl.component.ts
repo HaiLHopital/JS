@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WebGLService } from '../services/web-gl.service';
 
 @Component({
   selector: 'app-canvas-gl',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CanvasGLComponent implements OnInit {
 
-  constructor() { }
+  constructor(private webglService: WebGLService) { }
 
   ngOnInit(): void {
   }
