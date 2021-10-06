@@ -1,9 +1,11 @@
 .scene {
-  height: 800%;
+  position: absolute;
+  top: 10%;
+  height: 80%;
   width: 100%;
 
-  canvas {
-    height: 80%;
+  Canvas {
+    height: 100%;
     width: 100%;
   }
 }
