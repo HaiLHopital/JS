@@ -26,6 +26,9 @@ export class WebGLService {
 
   constructor() {}
 
+  getModelViewMatrix(): matrix.mat4 {
+    return this.modelViewMatrix;
+}
   initializeWebGLContext(canvas: HTMLCanvasElement): WebGLRenderingContext {
     this._renderingContext =
       canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
@@ -58,21 +61,22 @@ export class WebGLService {
         ),
       },
     };
-    this.buffers=this.initialiseBuffers();
-    debugger
+    this.buffers = this.initialiseBuffers();
+    debugger;
     this.prepareScene();
     debugger;
-    return this.gl
+    return this.gl;
   }
 
   updateWebGLCanvas() {
     this.initialiseWebGLCanvas();
 
-    // Our field of view is 45 degrees, with a width/height ratio of 640:480. 
-    // We only want to see objects  between 0.1 units and 100 units away from the camera. 
-    // The perspective projection matrix is a special matrix that is used to simulate the 
+    // Our field of view is 45 degrees, with a width/height ratio of 640:480.
+    // We only want to see objects  between 0.1 units and 100 units away from the camera.
+    // The perspective projection matrix is a special matrix that is used to simulate the
     // distortion of perspective in a camera.
-    this.aspect = this.clientCanvas.clientWidth / this.clientCanvas.clientHeight;
+    this.aspect =
+      this.clientCanvas.clientWidth / this.clientCanvas.clientHeight;
     this.projectionMatrix = matrix.mat4.create();
     matrix.mat4.perspective(
       this.projectionMatrix,
@@ -87,14 +91,21 @@ export class WebGLService {
   }
 
 
-  prepareScene() {
+  public prepareScene() {
+    console.log(this.gl)
     this.updateWebGLCanvas();
-    // move the camera position a bit backwards to a position where 
+    // move the camera position a bit backwards to a position where
     // we can observe the content that will be drawn from a distance
     matrix.mat4.translate(
       this.modelViewMatrix, // destination matrix
-      this.modelViewMatrix, // matrix to translate
-      [0.0, 0.0, -6.0]      // amount to translate
+      this.modelViewMatrix, // matrix to translatef
+      [1.0, 1.0, -5.0] // amount to translate
+    );
+    matrix.mat4.rotate(
+      this.modelViewMatrix, 
+      this.modelViewMatrix, 
+      1, 
+      [1,1,1]
     );
     // tell WebGL how to pull out the positions from the position
     // buffer into the vertexPosition attribute
@@ -124,7 +135,7 @@ export class WebGLService {
 
   initialiseWebGLCanvas() {
     this.gl.clearColor(0, 0, 0, 1);
-    debugger
+    debugger;
     this.gl.enable(this.gl.DEPTH_TEST);
 
     this.gl.depthFunc(this.gl.LEQUAL);
@@ -218,7 +229,35 @@ export class WebGLService {
 
     // create an array of positions for the square.
     const positions = new Float32Array([
-      1.0, 1.0, -1.0, 1.0, 1.0, -1.0, -1.0, -1.0,
+      // Front face
+      -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, -1.0, 1.0, 1.0,
+
+      1.0, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0, -1.0, 1.0,
+
+      // Back face
+      -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 1.0, 1.0, -1.0,
+
+      1.0, 1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0,
+
+      // Top face
+      -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0, 1.0, 1.0,
+
+      1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, 1.0, -1.0,
+
+      // Bottom face
+      -1.0, -1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, 1.0,
+
+      1.0, -1.0, 1.0, -1.0, -1.0, 1.0, -1.0, -1.0, -1.0,
+
+      // Right face
+      1.0, -1.0, -1.0, 1.0, 1.0, -1.0, 1.0, 1.0, 1.0,
+
+      1.0, 1.0, 1.0, 1.0, -1.0, 1.0, 1.0, -1.0, -1.0,
+
+      // Left face
+      -1.0, -1.0, -1.0, -1.0, -1.0, 1.0, -1.0, 1.0, 1.0,
+
+      -1.0, 1.0, 1.0, -1.0, 1.0, -1.0, -1.0, -1.0, -1.0,
     ]);
 
     // set the list of positions into WebGL to build the
@@ -228,13 +267,25 @@ export class WebGLService {
     this.gl.bufferData(this.gl.ARRAY_BUFFER, positions, this.gl.STATIC_DRAW);
 
     // Set up the colors for the vertices
-    let colors = new Uint16Array([
-      1.0,  1.0,  1.0,  1.0, // white
-      1.0,  0.0,  0.0,  1.0, // red
-      0.0,  1.0,  0.0,  1.0, // green
-      0.0,  0.0,  1.0,  1.0, // blue
-    ]);
+    // Set up the colors for the vertices
+    const faceColors = [
+      [1.0, 1.0, 1.0, 1.0], // Front face: white
+      [1.0, 0.0, 0.0, 1.0], // Back face: red
+      [0.0, 1.0, 0.0, 1.0], // Top face: green
+      [0.0, 0.0, 1.0, 1.0], // Bottom face: blue
+      [1.0, 1.0, 0.0, 1.0], // Right face: yellow
+      [1.0, 0.0, 1.0, 1.0], // Left face: purple
+    ];
 
+    // Convert the array of colors into a table for all the vertices.
+    let colors = [];
+    for (let j = 0; j < faceColors.length; ++j) {
+      const c = faceColors[j];
+
+      // Repeat each color six times for the three vertices of each triangle
+      // since we're rendering two triangles for each cube face
+      colors = colors.concat(c, c, c, c, c, c);
+    }
     const colorBuffer = this.gl.createBuffer();
     this.gl.bindBuffer(this.gl.ARRAY_BUFFER, colorBuffer);
     this.gl.bufferData(
@@ -250,7 +301,7 @@ export class WebGLService {
   }
 
   bindVertexPosition(programInfo: any, buffers: any) {
-    const bufferSize = 2;
+    const bufferSize = 3;
     const type = this.gl.FLOAT;
     const normalize = false;
     const stride = 0;
@@ -288,5 +339,4 @@ export class WebGLService {
   private setModelViewAsIdentity() {
     this.modelViewMatrix = matrix.mat4.create();
   }
-
 }

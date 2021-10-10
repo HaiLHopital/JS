@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { WebGLService } from '../services/web-gl.service';
 import { interval } from 'rxjs';
+import * as matrix from 'gl-matrix';
 
 
 @Component({
@@ -18,7 +19,9 @@ export class CanvasGLComponent implements OnInit, AfterViewInit {
   @ViewChild('sceneCanvas') private canvas: ElementRef<HTMLCanvasElement>;;
   private _60fpsInterval = 16.666666666666666667;
   private gl: WebGLRenderingContext
-
+  private cubeRotation = 0;
+  private deltaTime = 0;
+  
   constructor(private webglService: WebGLService) {}
 
   ngOnInit(): void {
@@ -40,11 +43,12 @@ export class CanvasGLComponent implements OnInit, AfterViewInit {
     });*/
   }
   private drawScene() {
+    
     // draw the scene
     const offset = 0;
-    const vertexCount = 4;
+    const vertexCount = 2*3*6;
     this.gl.drawArrays(
-      this.gl.TRIANGLE_STRIP,
+      this.gl.TRIANGLES,
       offset,
       vertexCount
     );
